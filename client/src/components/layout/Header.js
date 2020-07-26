@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, Button, Form, FormControl, NavDropdown, Badge } from 'react-bootstrap';
+import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-bootstrap';
 
 function Header() {
   return (

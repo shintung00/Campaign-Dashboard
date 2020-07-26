@@ -3,7 +3,7 @@ import TableEntry from './TableEntry';
 
 
 function OpenCampaignsTable(props) {
-  const { deleteCampaign, campaigns } = props;
+  const { deleteCampaign, campaigns, openPreview } = props;
   
   return (
     <div className="d-flex flex-column sent-campaign-container">
@@ -12,13 +12,13 @@ function OpenCampaignsTable(props) {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th>Campaign</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th className="table-first">Campaign</th>
+              <th className="table-second">Status</th>
+              <th className="table-third">Action</th>
             </tr>
           </thead>
           <tbody>
-            {campaigns.map(campaign => <TableEntry key={campaign.id} campaign={campaign} deleteCampaign={deleteCampaign}/>)}
+            {campaigns.map(campaign => <TableEntry key={campaign.id} campaign={campaign} deleteCampaign={deleteCampaign} openPreview={openPreview} />)}
           </tbody>
         </table>
       </div>
