@@ -1,8 +1,16 @@
 import React from 'react'
 
 function PhonePreview(props) {
-  const { name, text, segment_id, media, status, stats, id } = props.campaign;
-  console.log(text);
+  const { text, media } = props.campaign;
+  
+  const firstName = /{first_name}/gi;
+  const shopName = /{shop_name}/gi;
+  const shopLink = /{shop_link}/gi;
+
+  let cleanedText = text.replace(firstName, 'Tester');
+  cleanedText = cleanedText.replace(shopName, 'SamplePostScript')
+  cleanedText = cleanedText.replace(shopLink, 'https://likethebodyp.art');
+
   return (
     <div>
       <div className="phone-container">
@@ -14,7 +22,7 @@ function PhonePreview(props) {
             }}>Text Message</span>
           {media && <img src={media} className="phone-media" />}
           <div className="phone-msg">
-            {`${text}`}
+            {cleanedText}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function PreviewModals() {
   const [showSchedule, setShowSchedule] = useState(false);
@@ -14,9 +15,7 @@ function PreviewModals() {
   return (
       <Fragment>
         <div>
-          <Button variant="outline-primary">
-            Back to Campaigns (Save Draft)
-          </Button> 
+          <Link to='/' className="btn btn-primary">Back to Campaigns (Save Draft)</Link>         
         </div>
         <div className="button-group-preview-3">
           <Button variant="outline-success" onClick={handleShowTest}>

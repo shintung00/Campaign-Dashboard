@@ -40,7 +40,7 @@ const sampleCampaign = [
     "name": "Fall Decor Updates",
     "text": "Hey {first_name}! Back at {shop_name} we've gotten a WILD amount of home updates you NEED this Fall. 👀 {shop_link}",
     "status": "Preview",
-    "segment_id": 3,
+    "segment_id": 0,
     "media": "https://images.unsplash.com/photo-1568485248685-019a98426c14",
     "stats": null
   },
@@ -94,7 +94,7 @@ const sampleCampaign = [
     "name": "Super Bowl (and Commercials!)",
     "text": "Hey {first_name}! Back at {shop_name} we've gotten a WILD amount of home updates you NEED this Fall. 👀 {shop_link}",
     "status": "Preview",
-    "segment_id": 3,
+    "segment_id": 0,
     "media": "https://images.unsplash.com/photo-1568485248685-019a98426c14",
     "stats": null
   },
@@ -148,7 +148,7 @@ const sampleCampaign = [
     "name": "Pandemic Feast w/ Family",
     "text": "Hey {first_name}! Back at {shop_name} we've gotten a WILD amount of home updates you NEED this Fall. 👀 {shop_link}",
     "status": "Preview",
-    "segment_id": 3,
+    "segment_id": 0,
     "media": "https://images.unsplash.com/photo-1568485248685-019a98426c14",
     "stats": null
   },

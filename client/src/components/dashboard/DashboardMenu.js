@@ -1,25 +1,22 @@
-import React, { useState, Fragment } from 'react';
-import OpenCampaignsTable from './OpenCampaignsTable';
-import SentCampaignsTable from './SentCampaignsTable';
+import React, { useState, useEffect, Fragment } from 'react';
+import CampaignsTable from './CampaignsTable';
 import sampleCampaign from '../../sampleCampaign';
-import Pagination from './Pagination';
+import sampleSegment from '../../sampleSegment';
 import CampaignPreview from '../campaign/CampaignPreview';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CampaignEdit from '../campaign/CampaignEdit';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-
 function DashboardMenu() {
+  //Instantiate sample segments
+  const [segments] = useState(sampleSegment);
   //Instantiate sample campaigns
-  const [campaigns, setCampaigns] = useState(sampleCampaign);
+  const [campaigns, setCampaigns] = useState([]);
   //Campaign currently focused on
   const [currentCampaign, setCurrentCampaign] = useState(null);
-  //Starts CampaignsTable off at 1st page
-  const [currentPage, setCurrentPage] = useState(1);
-  //This determines how many Campaigns each page will display
-  const [campaignsPerPage] = useState(5);
 
-  const [editCampaign, setEditCampaign] = useState(null);
 
+  useEffect(() => setCampaigns(sampleCampaign), []);
 
   const deleteCampaign = (id) => {
     const newCampaigns = campaigns.reduce((acc, cv) => {
@@ -39,49 +36,75 @@ function DashboardMenu() {
     })
   }; 
 
-  const openEdit = () => {
-    setEditCampaign(currentCampaign);
+  const updateCampaign = (updatedCampaign) => {
+    let updatedCampaigns = [];
+    campaigns.forEach((campaign) => {
+      if (campaign.id !== updatedCampaign.id) {
+        updatedCampaigns.push(campaign);
+      } else {
+        updatedCampaigns.push(updatedCampaign);
+      }
+    })
+    setCampaigns(updatedCampaigns);
   }
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-
-  //Used in figuring out which of the campaigns need to be displayed
-  const indexOfLastCampaign = currentPage * campaignsPerPage;
-  const indexOfFirstCampaign = indexOfLastCampaign - campaignsPerPage;
-  const currentCampaigns = campaigns.slice(indexOfFirstCampaign, indexOfLastCampaign);
-
-
+  const createCampaign = () => {
+    let newIndex = 0;
+    campaigns.forEach((campaign) => {
+      if (campaign.id > newIndex) {
+        newIndex = campaign + 1;
+      }
+    })
+    let newCampaign = {
+      "id": newIndex,
+      "name": "",
+      "text": "Hey {first_name}! This is a sample message from {shop_name}",
+      "status": "Preview",
+      "segment_id": 0,
+      "media": "",
+      "stats": null
+    }
+    campaigns.unshift(newCampaign);
+    setCampaigns(campaigns);
+    setCurrentCampaign(newCampaign);
+  } 
+  
   return (
     <Router>
       <Fragment>
         <div className="dashboard-container">
           <ListGroup>
             <ListGroup.Item className="campaign-dashboard-header">
-              <span>Campaigns</span>
-              {/* {previewCampaign && editCampaign ? null : <Link to='/newcampaign' className='btn btn-info'>Create Campaign</Link>} */}
+              {currentCampaign ? <div><Link to='/' onClick={()=>setCurrentCampaign(null)}>Campaigns</Link><span> {'> Preview ' + currentCampaign.name}</span></div> : <Fragment><span>Campaigns</span>
+              <Link to='/newcampaign' className='btn btn-info' onClick={createCampaign}>Create Campaign</Link></Fragment>}
             </ListGroup.Item>
               <Switch>
                 <Route exact path='/' render={() => (
                   <Fragment>
                     <ListGroup.Item>
-                      <OpenCampaignsTable 
+                      <CampaignsTable 
                         openPreview={openPreview} 
                         deleteCampaign={deleteCampaign} 
-                        campaigns={currentCampaigns}/>
-                      <Pagination
-                        campaignsPerPage={campaignsPerPage}
-                        totalCampaigns={campaigns.length}
-                        paginate={paginate}
-                        currentPage={currentPage}
-                      />
+                        campaigns={campaigns}
+                        option='preview'/> 
                     </ListGroup.Item>
                     <ListGroupItem>
-                      <SentCampaignsTable />
+                    <CampaignsTable 
+                        openPreview={openPreview} 
+                        deleteCampaign={deleteCampaign} 
+                        campaigns={campaigns}
+                        option='sent'/> 
                     </ListGroupItem>
                   </Fragment>
                 )} /> 
                 <Route exact path='/campaign' render={() => (
-                  <CampaignPreview campaign={currentCampaign}/>
+                  <CampaignPreview campaign={currentCampaign} segments={segments}/>
+                )} />
+                <Route exact path='/editcampaign' render={() => (
+                  <CampaignEdit campaign={currentCampaign} updateCampaign={updateCampaign} segments={segments} />
+                )} />
+                <Route exact path='/newcampaign' render={() => (
+                  <CampaignEdit campaign={campaigns[0]} updateCampaign={updateCampaign} segments={segments} />
                 )} />
               </Switch>
             
@@ -92,4 +115,4 @@ function DashboardMenu() {
   )
 }
 
-export default DashboardMenu
+export default DashboardMenu;
