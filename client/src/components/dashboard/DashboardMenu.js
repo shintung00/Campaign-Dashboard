@@ -39,6 +39,10 @@ function DashboardMenu() {
     })
   }; 
 
+  const openEdit = () => {
+    setEditCampaign(currentCampaign);
+  }
+
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   //Used in figuring out which of the campaigns need to be displayed
