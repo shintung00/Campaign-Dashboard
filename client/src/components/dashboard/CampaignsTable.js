@@ -14,13 +14,9 @@ function CampaignsTable(props) {
     return acc;
   }, {'preview': [], 'sent': []});
 
-  let preview, sent;
-  if (option === 'preview') {
-    preview = filteredCampaigns.preview;
-  } 
-  if (option === 'sent') {
-    sent = filteredCampaigns.sent;
-  }
+  const preview = filteredCampaigns.preview;
+  const sent = filteredCampaigns.sent;
+
 
   console.log(preview);
   

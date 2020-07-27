@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 
 function TableEntry(props) {
   const { deleteCampaign, openPreview } = props;
-  const { name, id }  = props.campaign;
+  const { name, id, status }  = props.campaign;
 
   return (
       <tr>
         <td><Link to='/campaign' onClick={()=>{openPreview(id)}}>{name}</Link></td>
         <td>
           <h5>
-            <span className="badge badge-info">Preview</span>
+            {status === 'Preview' ? <span className="badge badge-info">Preview</span> : 
+            <span className="badge badge-primary">Sent</span>}
+            
           </h5>
         </td>
         <td>
