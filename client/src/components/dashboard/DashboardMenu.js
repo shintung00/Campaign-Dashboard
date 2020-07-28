@@ -18,27 +18,24 @@ function DashboardMenu() {
               <ListGroup.Item className="campaign-dashboard-header">
                 <DashboardHeader />
               </ListGroup.Item>
-                <Switch>
-                  <Route exact path='/' render={() => (
-                    <Fragment>
-                      <ListGroup.Item>
-                        <CampaignsTable option='preview'/> 
-                      </ListGroup.Item>
-                      <ListGroupItem>
-                      <CampaignsTable option='sent'/> 
-                      </ListGroupItem>
-                    </Fragment>
-                  )} /> 
-                  <Route exact path='/campaign' render={() => (
-                    <CampaignPreview />
-                  )} />
-                  <Route exact path='/editcampaign' render={() => (
-                    <CampaignEdit />
-                  )} />
-                  {/* <Route exact path='/campaign' render={() => (
-                    <CampaignEdit />
-                  )} /> */}
-                </Switch>
+              <Switch>
+                <Route exact path='/' render={() => (
+                  <Fragment>
+                    <ListGroup.Item>
+                      <CampaignsTable option='preview'/> 
+                    </ListGroup.Item>
+                    <ListGroupItem>
+                    <CampaignsTable option='sent'/> 
+                    </ListGroupItem>
+                  </Fragment>
+                )} /> 
+                <Route exact path='/campaign' render={() => (
+                  <CampaignPreview />
+                )} />
+                <Route exact path='/editcampaign' render={() => (
+                  <CampaignEdit />
+                )} />
+              </Switch>
             </ListGroup>    
           </div>
         </Fragment>

@@ -13,13 +13,14 @@ function TableEntry(props) {
           <h5>
             {status === 'Preview' ? <span className="badge badge-info">Preview</span> : 
             <span className="badge badge-primary">Sent</span>}
-            
           </h5>
         </td>
         <td>
           <div className="action-button-container d-flex flex-row">
             <div>
-              <Link to='/campaign' className="btn btn-outline-dark" onClick={()=>{openPreview(id)}}>Edit</Link>
+              <Link to='/campaign' className="btn btn-outline-dark" onClick={()=>{openPreview(id)}}>
+                Edit
+              </Link>
             </div>
             <div>
               <Button variant="outline-danger" onClick={()=>{

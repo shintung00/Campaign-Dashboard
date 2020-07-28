@@ -37,8 +37,7 @@ function SideNav() {
       </ListGroup.Item>
       <ListGroup.Item action variant="light" className="sidenav-item d-flex justify-content-start align-items-center">
         <i className="fa fa-window-maximize" aria-hidden="true"></i>
-        <span>Popups  <Badge variant="info">NEW</Badge>
-</span>
+        <span>Popups  <Badge variant="info">NEW</Badge></span>
       </ListGroup.Item>
       <ListGroup.Item action variant="light" className="sidenav-item d-flex justify-content-start align-items-center">
         <i className="fa fa-shopping-cart" aria-hidden="true"></i>

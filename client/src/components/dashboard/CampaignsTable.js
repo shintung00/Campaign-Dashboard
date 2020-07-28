@@ -31,16 +31,19 @@ function CampaignsTable({ option }) {
             </tr>
           </thead>
           <tbody>
-            {option === 'preview' ? preview.map(campaign => <TableEntry 
+            {option === 'preview' ? preview.map(campaign => 
+            <TableEntry 
               key={campaign.id} 
               campaign={campaign} 
               deleteCampaign={deleteCampaign} 
-              openPreview={openPreview} />) : sent.map(campaign => 
-              <TableEntry 
-                key={campaign.id} 
-                campaign={campaign} 
-                deleteCampaign={deleteCampaign} 
-                openPreview={openPreview} />)}
+              openPreview={openPreview} 
+            />) : sent.map(campaign => 
+            <TableEntry 
+              key={campaign.id} 
+              campaign={campaign} 
+              deleteCampaign={deleteCampaign} 
+              openPreview={openPreview} 
+            />)}
           </tbody>
         </table>
       </div>

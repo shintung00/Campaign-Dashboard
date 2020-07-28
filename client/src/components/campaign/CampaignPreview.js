@@ -46,7 +46,6 @@ function CampaignPreview() {
           <div className="campaign-preview-content-row">
             <span><strong>Timing/Status:</strong></span>
             {status === 'Preview' ? <span>Send Now</span> : <span>Sent</span>}
-            {status === 'Preview' && <Link to="/editcampaign">edit</Link>}
           </div>
           <div className="campaign-preview-content-row">
             <span><strong>Message:</strong></span>

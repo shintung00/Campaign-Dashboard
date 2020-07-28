@@ -8,9 +8,17 @@ function DashboardHeader() {
   const { currentCampaign, closeCampaign, createCampaign } = postscriptContext;
 
   return (
-    <div>
-      {currentCampaign ? <div><Link to='/' onClick={closeCampaign}>Campaigns</Link><span> {'> Preview ' + currentCampaign.name}</span></div> : <Fragment><span>Campaigns</span><Link to='/editcampaign' className='btn btn-info' onClick={createCampaign}>Create Campaign</Link></Fragment>}
-    </div>
+    <Fragment>
+      {currentCampaign ? 
+      <div>
+        <Link to='/' onClick={closeCampaign}>Campaigns</Link>
+        <span> {'> Preview ' + currentCampaign.name}</span>
+      </div> : 
+      <div>
+        <span>Campaigns</span>
+        <Link to='/editcampaign' className='btn btn-info' onClick={createCampaign}>Create Campaign</Link>
+      </div>}
+    </Fragment>
   )
 }
 

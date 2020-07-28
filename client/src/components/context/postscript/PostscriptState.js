@@ -65,33 +65,32 @@ const PostscriptState = props => {
     closeCampaign();
   }
 
-  //not tested
   const createCampaign = () => {
-      let newIndex = 0;
-      let campaignsCopy = [];
-      campaigns.forEach((campaign) => {
-        newIndex = Math.max(newIndex, campaign.id + 1);
-        campaignsCopy.push(campaign);
-      })
-      let newCampaign = {
-        "id": newIndex,
-        "name": "NEW CAMPAIGN",
-        "text": "Hey {first_name}! This is a sample message from {shop_name}",
-        "status": "Preview",
-        "segment_id": 0,
-        "media": "",
-        "stats": null
-      }
-      campaignsCopy.unshift(newCampaign);
-      dispatch({
-        type: REFRESH_CAMPAIGNS,
-        payload: campaignsCopy
-      });
-      dispatch({ 
-        type: OPEN_CAMPAIGN,
-        payload: campaignsCopy[0]
-      })
-    } 
+    let newIndex = 0;
+    let campaignsCopy = [];
+    campaigns.forEach((campaign) => {
+      newIndex = Math.max(newIndex, campaign.id + 1);
+      campaignsCopy.push(campaign);
+    })
+    let newCampaign = {
+      "id": newIndex,
+      "name": "[NEW campaign]",
+      "text": "Hey {first_name}! This is a sample message from {shop_name}",
+      "status": "Preview",
+      "segment_id": 0,
+      "media": "",
+      "stats": null
+    }
+    campaignsCopy.unshift(newCampaign);
+    dispatch({
+      type: REFRESH_CAMPAIGNS,
+      payload: campaignsCopy
+    });
+    dispatch({ 
+      type: OPEN_CAMPAIGN,
+      payload: campaignsCopy[0]
+    })
+  } 
 
   return <PostscriptContext.Provider
     value={{

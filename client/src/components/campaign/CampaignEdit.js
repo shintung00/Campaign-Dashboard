@@ -44,7 +44,6 @@ function CampaignEdit() {
                   ))}
                 </NavDropdown>
               }
-
               <Badge variant="primary">{subs} Members</Badge>
               <OverlayTrigger
                 key="top"
@@ -55,8 +54,8 @@ function CampaignEdit() {
                   </Tooltip>
                 }
               >
-              <i className="fa fa-info-circle" aria-hidden="true"></i>
-            </OverlayTrigger>
+                <i className="fa fa-info-circle" aria-hidden="true"></i>
+              </OverlayTrigger>
             </div>
           </div>
           <div className="campaign-preview-content-row">
@@ -69,7 +68,6 @@ function CampaignEdit() {
             <br />
             {<textarea type="text" placeholder="Type your message here" rows="4" cols="100" value={newText} onChange={changeText}/>}
           </div>
-
         </div>
         <div></div>
         <div className="campaign-preview-phone">
