@@ -1,11 +1,17 @@
-import React, {Fragment} from 'react'
+import React, { useContext, Fragment } from 'react'
 import PreviewModals from '../modals/PreviewModals';
 import PhonePreview from '../campaign/PhonePreview';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PostscriptContext from '../context/postscript/postscriptContext';
 
-function CampaignPreview({ segments, campaign }) {
-  const { name, text, segment_id, media, status, stats } = campaign;
+
+function CampaignPreview() {
+  const postscriptContext = useContext(PostscriptContext);
+
+  const { segments, currentCampaign } = postscriptContext;
+
+  const { name, text, segment_id, media, status, stats } = currentCampaign;
   return (
     <div className="d-flex flex-column">
       <div className="campaign-preview-container d-flex flex-row justify-content-around">
@@ -88,7 +94,7 @@ function CampaignPreview({ segments, campaign }) {
         </div>
         <div></div>
         <div className="campaign-preview-phone">
-          <PhonePreview campaign={campaign}/>
+          <PhonePreview campaign={currentCampaign}/>
         </div>
       </div>
       <div className="button-group-preview d-flex justify-content-between">

@@ -1,8 +1,13 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PostscriptContext from '../context/postscript/postscriptContext';
+
 
 function PreviewModals() {
+  const postscriptContext = useContext(PostscriptContext);
+  const { closeCampaign } = postscriptContext;
+
   const [showSchedule, setShowSchedule] = useState(false);
   const [showTest, setShowTest] = useState(false);
 
@@ -15,7 +20,7 @@ function PreviewModals() {
   return (
       <Fragment>
         <div>
-          <Link to='/' className="btn btn-primary">Back to Campaigns (Save Draft)</Link>         
+          <Link to='/' onClick={closeCampaign} className="btn btn-primary">Back to Campaigns (Save Draft)</Link>         
         </div>
         <div className="button-group-preview-3">
           <Button variant="outline-success" onClick={handleShowTest}>

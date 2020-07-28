@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import TableEntry from './TableEntry';
+import PostscriptContext from '../context/postscript/postscriptContext';
 
-
-function CampaignsTable(props) {
-  const { deleteCampaign, campaigns, openPreview, option } = props;
+function CampaignsTable({ option }) {
+  const postscriptContext = useContext(PostscriptContext);
+  const { deleteCampaign, openPreview, campaigns } = postscriptContext;
 
   const filteredCampaigns = campaigns.reduce((acc, cv) => {
     if (cv.status === 'Preview') {
@@ -15,11 +16,7 @@ function CampaignsTable(props) {
   }, {'preview': [], 'sent': []});
 
   const preview = filteredCampaigns.preview;
-  const sent = filteredCampaigns.sent;
-
-
-  console.log(preview);
-  
+  const sent = filteredCampaigns.sent;  
   
   return (
     <div className="d-flex flex-column sent-campaign-container">

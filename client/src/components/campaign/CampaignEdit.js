@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PhonePreview from './PhonePreview';
 import { Tooltip, OverlayTrigger, Badge, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PostscriptContext from '../context/postscript/postscriptContext';
 
-function CampaignEdit({ campaign, segments, updateCampaign }) {
-  // console.log(campaign);
-  const { name, text, media, segment_id } = campaign;
+
+function CampaignEdit() {
+  const postscriptContext = useContext(PostscriptContext);
+  const { updateCampaign, segments, currentCampaign } = postscriptContext;
+  const { name, text, media, segment_id } = currentCampaign;
 
   const [currentSegment, setCurrentSegment] = useState(segment_id);
   const [campaignName, setCampaignName] = useState(name);  
@@ -79,12 +82,11 @@ function CampaignEdit({ campaign, segments, updateCampaign }) {
         </Link>
         <Link to='/' className="btn btn-primary" onClick={()=>{
           let updatedCampaign = {};
-          Object.assign(updatedCampaign, campaign);
+          Object.assign(updatedCampaign, currentCampaign);
           updatedCampaign.media = mediaLink;
           updatedCampaign.text = newText;
           updatedCampaign.name = campaignName;
           updatedCampaign.segment_id = currentSegment;
-          console.log(currentSegment);
           updateCampaign(updatedCampaign);
         }}>Save</Link>
       </div>

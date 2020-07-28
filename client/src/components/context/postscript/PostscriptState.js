@@ -1,75 +1,108 @@
 import React, { useReducer } from 'react';
 import PostscriptContext from './postscriptContext';
 import PostscriptReducer from './postscriptReducer';
+import sampleCampaign from '../../../sampleCampaign';
+import sampleSegment from '../../../sampleSegment';
 import {
-  SEARCH_USERS,
-  SET_LOADING,
-  CLEAR_USERS,
-  GET_REPOS,
-  GET_USER
+  OPEN_CAMPAIGN,
+  CLOSE_CAMPAIGN,
+  REFRESH_CAMPAIGNS,
 } from '../types';
+
 
 const PostscriptState = props => {
   const initialState = {
-    segments: [],
-    campaigns: [],
+    segments: sampleSegment,
+    campaigns: sampleCampaign,
     currentCampaign: null,
   }
 
   const [state, dispatch] = useReducer(PostscriptReducer, initialState);
+  const { segments, campaigns, currentCampaign } = state;
 
-  //Search User
-  const searchUsers = async text => {
-    setLoading();
+  const closeCampaign = () => dispatch(
+    { type: CLOSE_CAMPAIGN }
+  )
 
-    const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&clidentid=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    dispatch({
-      type: SEARCH_USERS,
-      payload: res.data.items
+  const openPreview = id => {
+    campaigns.forEach(campaign => {
+      if (campaign.id === id) {
+        dispatch({ 
+          type: OPEN_CAMPAIGN,
+          payload: campaign
+        })
+      }
     })
-  }
-  //Get User
-  const getUser = async (username) => {
-    setLoading();
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?clidentid=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
+  }; 
+
+  const deleteCampaign = id => {
+    const newCampaigns = campaigns.reduce((acc, cv) => {
+      if (cv.id !== id) {
+        acc.push(cv);
+      }
+      return acc;
+    }, []);
+    closeCampaign();
     dispatch({
-      type: GET_USER,
-      payload: res.data
-    })    
-  }
-  //Get Repos
-  const getUserRepos = async (username) => {
-    setLoading();
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&clidentid=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-    dispatch({
-      type: GET_REPOS,
-      payload: res.data
-    });
+      type: REFRESH_CAMPAIGNS,
+      payload: newCampaigns
+    })
   };
 
-  //Clear Users
-  const clearUsers = () => dispatch({ type: CLEAR_USERS });
+  const updateCampaign = updatedCampaign => {
+    let updatedCampaigns = [];
+    campaigns.forEach((campaign) => {
+      if (campaign.id !== updatedCampaign.id) {
+        updatedCampaigns.push(campaign);
+      } else {
+        updatedCampaigns.push(updatedCampaign);
+      }
+    })
+    dispatch({
+      type: REFRESH_CAMPAIGNS,
+      payload: updatedCampaigns
+    })  
+    closeCampaign();
+  }
 
-  //Set Loading
-  const setLoading = () => dispatch({ type: SET_LOADING });
+  //not tested
+  const createCampaign = () => {
+      let newIndex = 0;
+      let campaignsCopy = [];
+      campaigns.forEach((campaign) => {
+        newIndex = Math.max(newIndex, campaign.id + 1);
+        campaignsCopy.push(campaign);
+      })
+      let newCampaign = {
+        "id": newIndex,
+        "name": "NEW CAMPAIGN",
+        "text": "Hey {first_name}! This is a sample message from {shop_name}",
+        "status": "Preview",
+        "segment_id": 0,
+        "media": "",
+        "stats": null
+      }
+      campaignsCopy.unshift(newCampaign);
+      dispatch({
+        type: REFRESH_CAMPAIGNS,
+        payload: campaignsCopy
+      });
+      dispatch({ 
+        type: OPEN_CAMPAIGN,
+        payload: campaignsCopy[0]
+      })
+    } 
 
   return <PostscriptContext.Provider
     value={{
-      users: state.users,
-      user: state.user,
-      repos: state.repos,
-      loading: state.loading,
-      searchUsers,
-      clearUsers,
-      getUser,
-      getUserRepos
+      deleteCampaign,
+      openPreview,
+      closeCampaign,
+      updateCampaign,
+      createCampaign,
+      campaigns: campaigns,
+      segments: segments,
+      currentCampaign: currentCampaign,
     }}
   >
     {props.children}
