@@ -11,6 +11,7 @@ function CampaignEdit({ campaign, segments, updateCampaign }) {
   const [campaignName, setCampaignName] = useState(name);  
   const [mediaLink, setMediaLink] = useState(media);
   const [newText, setNewText] = useState(text);
+
   const { subscribers_count: subs, name: segName } = segments[currentSegment];
 
   const changeName = e => setCampaignName(e.target.value);
@@ -69,7 +70,7 @@ function CampaignEdit({ campaign, segments, updateCampaign }) {
         </div>
         <div></div>
         <div className="campaign-preview-phone">
-          <PhonePreview campaign={{ media: mediaLink? mediaLink:'', text: newText }}/>
+          <PhonePreview campaign={{ media: (mediaLink ? mediaLink : ''), text: newText }}/>
         </div>
       </div>
       <div className="button-group-preview d-flex flex-row-reverse">

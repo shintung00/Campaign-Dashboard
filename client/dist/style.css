@@ -8,6 +8,10 @@
   right: 40px;
 }
 
+#logo {
+  cursor: pointer;
+}
+
 .buff-10px {
   padding: 5px
 }
@@ -142,3 +146,4 @@
 .segment-dropdown {
   border: 1px solid blue;
 }
+

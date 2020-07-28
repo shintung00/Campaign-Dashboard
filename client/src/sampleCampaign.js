@@ -2,7 +2,7 @@ const sampleCampaign = [
   {
     "id": 1,
     "name": "Fourth of July Promo",
-    "text": "Hi {first_name}, it's {shop_name}!                                                                               \n  \n \n                                                                                      This 4th of July celebrate with our Freedom Sale! This is a really longggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg message to test out overflow",
+    "text": "Hi {first_name}, it's {shop_name}! This 4th of July celebrate with our Freedom Sale! This is a really longggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg message to test out overflow",
     "status": "Sent",
     "segment_id": 1,
     "media": "https://images.unsplash.com/photo-1556804335-2fa563e93aae",
@@ -17,7 +17,7 @@ const sampleCampaign = [
     "text": "Hey {first_name}, it's {shop_name}! We have a HUGE sale on Labor Day, get up to 30% off with LABOR30. {shop_link}",
     "status": "Sent",
     "segment_id": 1,
-    "media": null,
+    "media": "https://media.giphy.com/media/K0ZZjkjYKiD7y/giphy.gif",
     "stats": {
       "sent": 7228,
       "clicked": 6883
@@ -71,7 +71,7 @@ const sampleCampaign = [
     "text": "Hey {first_name}, it's {shop_name}! We have a HUGE sale on Labor Day, get up to 30% off with LABOR30. {shop_link}",
     "status": "Sent",
     "segment_id": 1,
-    "media": null,
+    "media": "https://media.giphy.com/media/K0ZZjkjYKiD7y/giphy.gif",
     "stats": {
       "sent": 7228,
       "clicked": 6883
@@ -125,7 +125,7 @@ const sampleCampaign = [
     "text": "Hey {first_name}, it's {shop_name}! We have a HUGE sale on Labor Day, get up to 30% off with LABOR30. {shop_link}",
     "status": "Sent",
     "segment_id": 1,
-    "media": null,
+    "media": "https://media.giphy.com/media/K0ZZjkjYKiD7y/giphy.gif",
     "stats": {
       "sent": 7228,
       "clicked": 6883

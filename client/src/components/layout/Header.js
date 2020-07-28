@@ -4,7 +4,7 @@ import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-boots
 function Header() {
   return (
     <Navbar bg="primary" variant="dark">
-      <Navbar.Brand><img src='postscript.png' style={{height: '36px'}}/></Navbar.Brand>
+      <Navbar.Brand><img src='postscript.png' id="logo" style={{height: '36px'}}/></Navbar.Brand>
       <Nav className="ml-auto">
         <div className="d-flex flex-row">
           <Form inline>
