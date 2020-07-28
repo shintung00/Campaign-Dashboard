@@ -31,21 +31,17 @@ entity that I can always import into the components that need it.
 Overall, the architecture of my app hasn't differed since the refactor.
 
 Some challenges along the way:
--Refactoring it to context
--Creating the mobile preview
+- Refactoring it to context
+- Creating the mobile preview
 
 Things I would work on given more time:
--Implementing that emoji-mart!
--Refactoring the CampaignEdit component to use context as well
-  *Given the time contraints, I didn't have time to refactor but
-    I can definitely see the code being even cleaner
--Working on additional custom tags rather than using hardcoded regex
--Text-compression/production build
--Reading the line-breaks for message content
+- Implementing emoji-mart
+- Working on additional custom tags rather than using hardcoded regex
+- Reading the line-breaks for message content
+- Text-compression/production build
 
 Improvements to the service:
--Have a gallery of most recently used gifs or some gif-mart to make the process not
-  purely upload based
--Create more appealing confirmation layouts rather than using native browser
--A hover-over on the TableEntry creates a sneak peak of the CampaignPreview
--Allow for additional options for each TableEntry, such as duplicating a campaign
+- Create more appealing confirmation layouts rather than using native browser
+- A hover-over on the TableEntry creates a sneak peak of the CampaignPreview phone view
+- Allow for additional options for each TableEntry, such as duplicating a campaign
+- Incorporate a gif/img-market so that users don't have to manually link every gif/img

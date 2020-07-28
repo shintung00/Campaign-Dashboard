@@ -11,14 +11,22 @@ import {
 
 
 const PostscriptState = props => {
+
   const initialState = {
     segments: sampleSegment,
     campaigns: sampleCampaign,
     currentCampaign: null,
+    mediaList: sampleCampaign.reduce((acc, cv) => {
+      if (acc[cv.media] === undefined) {
+        acc[`${cv.media}`] = cv.media;
+        acc.list.push(cv.media);
+      }
+      return acc;
+    }, {'list': []})
   }
 
   const [state, dispatch] = useReducer(PostscriptReducer, initialState);
-  const { segments, campaigns, currentCampaign } = state;
+  const { segments, campaigns, currentCampaign, mediaList } = state;
 
   const closeCampaign = () => dispatch(
     { type: CLOSE_CAMPAIGN }
@@ -99,9 +107,10 @@ const PostscriptState = props => {
       closeCampaign,
       updateCampaign,
       createCampaign,
-      campaigns: campaigns,
-      segments: segments,
-      currentCampaign: currentCampaign,
+      campaigns,
+      segments,
+      currentCampaign,
+      mediaList: mediaList.list
     }}
   >
     {props.children}

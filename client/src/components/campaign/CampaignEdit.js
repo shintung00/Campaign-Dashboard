@@ -7,7 +7,7 @@ import PostscriptContext from '../context/postscript/postscriptContext';
 
 function CampaignEdit() {
   const postscriptContext = useContext(PostscriptContext);
-  const { updateCampaign, segments, currentCampaign } = postscriptContext;
+  const { updateCampaign, segments, currentCampaign, mediaList } = postscriptContext;
   const { name, text, media, segment_id } = currentCampaign;
 
   const [currentSegment, setCurrentSegment] = useState(segment_id);
@@ -24,6 +24,7 @@ function CampaignEdit() {
     setCurrentSegment(e.target.id);
   }
   
+  console.log(mediaList);
   return (
     <div className="d-flex flex-column">
       <div className="campaign-preview-container d-flex flex-row justify-content-around">
@@ -61,7 +62,15 @@ function CampaignEdit() {
           <div className="campaign-preview-content-row">
             <span><strong>Media:</strong></span>
             <br />
-            {<input type="text" value={mediaLink ? mediaLink : ''} onChange={changeMedia} size="60"/>}
+            <label for="media-choice">Choose from preview or paste a new one:</label>
+            <input list="media-selections" id="media-choice" name="media-choice" onChange={changeMedia}/>
+            <datalist id="media-selections">
+              {mediaList.length > 0 ? 
+                mediaList.map((media) => (
+                  <option value={media} />
+                )) : null
+              }
+            </datalist>
           </div>
           <div className="campaign-preview-content-row">
             <span><strong>Message</strong></span>
