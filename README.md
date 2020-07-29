@@ -1,6 +1,10 @@
 # React-Express Starter
 This repo contains a barebones app using React 16 and Express using Webpack 4 and Babel 7. The react app currently renders a simple Hello World. It can easily be extended by adding more components and routes to make a full-stack app.
 
+![](postscript-demo.gif)
+
+This project was built as a takehome for Postscript. You can find the [full video demo here](https://youtu.be/xzozi9hcN_A).
+
 ## Getting Started
 
 ### Installation
