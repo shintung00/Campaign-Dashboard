@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function PhonePreview(props) {
   const { text, media } = props.campaign;
@@ -29,5 +30,10 @@ function PhonePreview(props) {
     </div>
   )
 }
+
+PhonePreview.propTypes = {
+  campaign: PropTypes.object.isRequired
+};
+
 
 export default PhonePreview

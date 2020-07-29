@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import TableEntry from './TableEntry';
 import PostscriptContext from '../context/postscript/postscriptContext';
+import PropTypes from 'prop-types';
 
 function CampaignsTable({ option }) {
   const postscriptContext = useContext(PostscriptContext);
@@ -49,6 +50,10 @@ function CampaignsTable({ option }) {
       </div>
     </div>
   )
+};
+
+CampaignsTable.propTypes = {
+  option: PropTypes.string.isRequired
 };
 
 export default CampaignsTable;

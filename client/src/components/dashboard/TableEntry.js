@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function TableEntry(props) {
   const { deleteCampaign, openPreview } = props;
@@ -35,5 +36,11 @@ function TableEntry(props) {
       </tr>
   )
 }
+
+TableEntry.propTypes = {
+  campaign: PropTypes.object.isRequired,
+  deleteCampaign: PropTypes.func.isRequired,
+  openPreview: PropTypes.func.isRequired,
+};
 
 export default TableEntry

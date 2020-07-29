@@ -24,7 +24,6 @@ function CampaignEdit() {
     setCurrentSegment(e.target.id);
   }
   
-  console.log(mediaList);
   return (
     <div className="d-flex flex-column">
       <div className="campaign-preview-container d-flex flex-row justify-content-around">
@@ -62,12 +61,12 @@ function CampaignEdit() {
           <div className="campaign-preview-content-row">
             <span><strong>Media:</strong></span>
             <br />
-            <label for="media-choice">Choose from preview or paste a new one:</label>
+            <label htmlFor="media-choice">Choose from preview or paste a new one:</label>
             <input list="media-selections" id="media-choice" name="media-choice" onChange={changeMedia}/>
             <datalist id="media-selections">
-              {mediaList.length > 0 ? 
-                mediaList.map((media) => (
-                  <option value={media} />
+              {mediaList.length > 0 ?
+                mediaList.map((media, index) => (
+                  <option key={index} value={media} />
                 )) : null
               }
             </datalist>
