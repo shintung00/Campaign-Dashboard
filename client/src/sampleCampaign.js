@@ -6,10 +6,7 @@ const sampleCampaign = [
     "status": "Preview",
     "segment_id": 1,
     "media": "https://images.unsplash.com/photo-1556804335-2fa563e93aae",
-    "stats": {
-      "sent": 6506,
-      "clicked": 6137
-    }
+    "stats": null
   },
   {
     "id": 2,
