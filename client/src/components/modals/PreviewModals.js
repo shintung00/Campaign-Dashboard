@@ -8,9 +8,9 @@ function PreviewModals() {
   const postscriptContext = useContext(PostscriptContext);
   const { closeCampaign } = postscriptContext;
 
+  //Bootstrap modal methods and state
   const [showSchedule, setShowSchedule] = useState(false);
   const [showTest, setShowTest] = useState(false);
-
 
   const handleCloseTest = () => setShowTest(false);
   const handleShowTest = () => setShowTest(true);

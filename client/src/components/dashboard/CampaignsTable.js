@@ -33,13 +33,15 @@ function CampaignsTable({ option }) {
           </thead>
           <tbody>
             {option === 'preview' ? preview.map(campaign => 
-            <TableEntry 
+            <TableEntry
+              className="campaign-table-entry"
               key={campaign.id} 
               campaign={campaign} 
               deleteCampaign={deleteCampaign} 
               openPreview={openPreview} 
             />) : sent.map(campaign => 
             <TableEntry 
+              className="campaign-table-entry"
               key={campaign.id} 
               campaign={campaign} 
               deleteCampaign={deleteCampaign} 
@@ -55,5 +57,11 @@ function CampaignsTable({ option }) {
 CampaignsTable.propTypes = {
   option: PropTypes.string.isRequired
 };
+
+CampaignsTable.contextTypes = {
+  campaigns: PropTypes.array,
+  deleteCampaign: PropTypes.func,
+  openPreview: PropTypes.func
+}
 
 export default CampaignsTable;

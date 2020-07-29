@@ -12,6 +12,7 @@ function CampaignPreview() {
   const { segments, currentCampaign } = postscriptContext;
 
   const { name, text, segment_id, media, status, stats } = currentCampaign;
+  
   return (
     <div className="d-flex flex-column">
       <div className="campaign-preview-container d-flex flex-row justify-content-around">
