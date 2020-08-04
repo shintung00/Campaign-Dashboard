@@ -74,7 +74,7 @@ function CampaignEdit() {
           <div className="campaign-preview-content-row">
             <span><strong>Message</strong></span>
             <br />
-            {<textarea type="text" placeholder="Type your message here" rows="4" cols="100" value={newText} onChange={changeText}/>}
+            {<textarea type="text" placeholder="Type your message here" rows="8" cols="70" value={newText} onChange={changeText}/>}
           </div>
         </div>
         <div></div>
