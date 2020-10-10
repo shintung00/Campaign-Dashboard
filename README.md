@@ -25,25 +25,6 @@ Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
 
 
 ### Reflection
-While I haven't had much experience with the Context API, I've read that refactoring a
-hooks-based structure into context-based would be very doable.
-
-I then started by diagramming the data flow from parents to children and studying examples
-of context-based architecture to get an idea of the advantages of switching over. 
-Ultimately, I wanted to be able to store app-level states and related methods in a separate
-entity that I can always import into the components that need it.
-Overall, the architecture of my app hasn't differed since the refactor.
-
-Some challenges along the way:
-- Refactoring it to context
-- Creating the mobile preview
-
-Things I would work on given more time:
-- Implementing emoji-mart
-- Working on additional custom tags rather than using hardcoded regex
-- Reading the line-breaks for message content
-- Text-compression/production build
-
 Improvements to the service:
 - Create more appealing confirmation layouts rather than using native browser
 - A hover-over on the TableEntry creates a sneak peak of the CampaignPreview phone view
