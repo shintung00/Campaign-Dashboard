@@ -6,9 +6,10 @@ const path = require('path');
 // Instantiate the express server
 const app = express();
 // Set a constant for the port that our express server will listen on
-const PORT = 3000;
+const PORT = process.env.PORT || 80;
+
 
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
 app.use(express.static(path.join(__dirname, '../client/dist')));
 // Start the server on the provided port
-app.listen(process.env.PORT || 3000, () => console.log('Listening on port: ' + PORT));
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));;
