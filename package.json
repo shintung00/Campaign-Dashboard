@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "react-dev": "webpack -w",
+    "react-dev": "webpack",
     "start": "nodemon ./server/index.js",
     "heroku-postbuild": "cd client && npm install && npm run react-dev && npm start"
   },
