@@ -11,4 +11,4 @@ const PORT = 3000;
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
 app.use(express.static(path.join(__dirname, '../client/dist')));
 // Start the server on the provided port
-app.listen(PORT, () => console.log('Listening on port: ' + PORT));
+app.listen(process.env.PORT || 3000, () => console.log('Listening on port: ' + PORT));
