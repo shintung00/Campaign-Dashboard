@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -w",
-    "start": "nodemon ./server/index.js"
+    "start": "nodemon ./server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run react-dev && npm start"
   },
   "keywords": [],
   "author": "",
